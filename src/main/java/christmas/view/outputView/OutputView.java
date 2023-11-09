@@ -16,4 +16,8 @@ public class OutputView {
         output.display(WELCOME.getMessage());
     }
 
+    public void displayError(String message) {
+        output.displayError(message);
+    }
+
 }
