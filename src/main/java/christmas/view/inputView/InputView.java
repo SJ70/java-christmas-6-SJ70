@@ -1,9 +1,12 @@
 package christmas.view.inputView;
 
+import static christmas.view.inputView.Messages.INPUT_ORDER;
 import static christmas.view.inputView.Messages.INPUT_VISIT_DATE;
 
+import christmas.domain.order.dto.OrderItemDTO;
 import christmas.view.Input;
 import christmas.view.Output;
+import java.util.List;
 
 public class InputView {
 
@@ -18,6 +21,11 @@ public class InputView {
     public int inputVisitDay() {
         output.display(INPUT_VISIT_DATE.getMessage());
         return inputNumber();
+    }
+
+    public List<OrderItemDTO> inputOrder() {
+        output.display(INPUT_ORDER.getMessage());
+        return OrderParser.parseOrder(input());
     }
 
     private int inputNumber() {

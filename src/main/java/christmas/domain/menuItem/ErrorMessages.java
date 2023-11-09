@@ -1,9 +1,8 @@
-package christmas.view.inputView;
+package christmas.domain.menuItem;
 
 enum ErrorMessages {
 
-    NOT_A_NUMBER("숫자가 아닙니다."),
-    INVALID_ORDER_ITEM_REGEX("주문 형식에 맞지 않습니다");
+    NONEXISTENT_MENU("존재하지 않는 메뉴입니다.");
 
     private final String message;
 
