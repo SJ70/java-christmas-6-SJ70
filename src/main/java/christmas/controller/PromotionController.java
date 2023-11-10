@@ -22,6 +22,7 @@ public class PromotionController {
         outputView.displayWelcomeMessage();
         VisitDate visitDate = requestInputVisitDate();
         Order order = requestInputOrder();
+        outputView.displayOrder(order.getOrderItemDTOs());
     }
 
     private VisitDate requestInputVisitDate() {

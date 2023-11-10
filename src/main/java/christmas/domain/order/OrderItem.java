@@ -39,6 +39,10 @@ public class OrderItem {
         return menuItem.getType();
     }
 
+    public OrderItemDTO getOrderItemDTO() {
+        return new OrderItemDTO(menuItem.getName(), count);
+    }
+
     public int getCount() {
         return count;
     }

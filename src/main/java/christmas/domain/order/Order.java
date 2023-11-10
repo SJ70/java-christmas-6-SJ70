@@ -55,4 +55,10 @@ public class Order {
         }
     }
 
+    public List<OrderItemDTO> getOrderItemDTOs() {
+        return order.stream()
+                .map(OrderItem::getOrderItemDTO)
+                .toList();
+    }
+
 }
