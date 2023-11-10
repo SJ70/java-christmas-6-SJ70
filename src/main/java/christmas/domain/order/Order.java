@@ -68,4 +68,11 @@ public class Order {
                 .orElse(0);
     }
 
+    public int countTypeOf(MenuItemType type) {
+        return order.stream()
+                .filter(orderItem -> orderItem.getMenuType().equals(type))
+                .mapToInt(OrderItem::getCount)
+                .sum();
+    }
+
 }

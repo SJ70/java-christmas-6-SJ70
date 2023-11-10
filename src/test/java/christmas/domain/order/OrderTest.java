@@ -4,6 +4,7 @@ import static christmas.domain.order.ErrorMessages.DUPLICATED_MENU_ITEMS_COUNT;
 import static christmas.domain.order.ErrorMessages.ONLY_BEVERAGES;
 import static christmas.domain.order.ErrorMessages.TOO_MANY_MENU_ITEMS_COUNT;
 
+import christmas.domain.menuItem.MenuItemType;
 import christmas.domain.order.dto.OrderItemDTO;
 import java.util.List;
 import org.assertj.core.api.Assertions;
@@ -92,6 +93,27 @@ class OrderTest {
         // then
         Assertions.assertThat(entirePrice)
                 .isEqualTo(expectedPrice);
+    }
+
+    @DisplayName("선택한 음식 타입에 해당하는 음식의 수를 올바르게 셀 수 있다.")
+    @Test
+    void countTypeOf() {
+        // given
+        Order order = Order.fromOrderItemDTOs(
+                List.of(
+                        new OrderItemDTO("양송이수프", 2),
+                        new OrderItemDTO("타파스", 3),
+                        new OrderItemDTO("레드와인", 1)
+                )
+        );
+
+        // when
+        int appetizerCount = order.countTypeOf(MenuItemType.APPETIZER);
+        int expectedCount = 5;
+
+        // then
+        Assertions.assertThat(appetizerCount)
+                .isEqualTo(expectedCount);
     }
 
 }
