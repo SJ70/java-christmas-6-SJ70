@@ -24,6 +24,10 @@ public class OutputView {
         output.display(OrderFormatter.formatOrderMessage(order));
     }
 
+    public void displayEntirePrice(int amount) {
+        output.display(ORDER.getMessage());
+    }
+
     public void displayError(String message) {
         output.displayError(message);
     }

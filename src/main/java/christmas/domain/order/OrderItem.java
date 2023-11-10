@@ -39,6 +39,14 @@ public class OrderItem {
         return menuItem.getType();
     }
 
+    public int getPrice() {
+        return menuItem.getPrice();
+    }
+
+    public int getEntirePrice() {
+        return menuItem.getPrice() * count;
+    }
+
     public OrderItemDTO getOrderItemDTO() {
         return new OrderItemDTO(menuItem.getName(), count);
     }

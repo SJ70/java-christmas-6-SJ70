@@ -61,4 +61,11 @@ public class Order {
                 .toList();
     }
 
+    public int getEntirePrice() {
+        return order.stream()
+                .map(OrderItem::getEntirePrice)
+                .reduce(Integer::sum)
+                .orElse(0);
+    }
+
 }

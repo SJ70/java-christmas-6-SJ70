@@ -74,4 +74,24 @@ class OrderTest {
                 .isInstanceOf(Order.class);
     }
 
+    @DisplayName("총 주문 금액을 올바르게 가져올 수 있다.")
+    @Test
+    void getEntirePrice() {
+        // given
+        Order order = Order.fromOrderItemDTOs(
+                List.of(
+                        new OrderItemDTO("양송이수프", 2),
+                        new OrderItemDTO("레드와인", 1)
+                )
+        );
+
+        // when
+        int entirePrice = order.getEntirePrice();
+        int expectedPrice = 72000;
+
+        // then
+        Assertions.assertThat(entirePrice)
+                .isEqualTo(expectedPrice);
+    }
+
 }
