@@ -3,7 +3,7 @@ package christmas.view.outputView;
 import static christmas.view.outputView.Messages.ORDER;
 import static christmas.view.outputView.Messages.WELCOME;
 
-import christmas.domain.order.dto.OrderItemDTO;
+import christmas.dto.NameAndCountDTO;
 import christmas.view.Output;
 import java.util.List;
 
@@ -19,9 +19,9 @@ public class OutputView {
         output.display(WELCOME.getMessage());
     }
 
-    public void displayOrder(List<OrderItemDTO> order) {
+    public void displayOrder(List<NameAndCountDTO> order) {
         output.display(ORDER.getMessage());
-        output.display(OrderFormatter.formatOrderMessage(order));
+        output.display(NameAndCountFormatter.formatNameAndCountMessages(order));
     }
 
     public void displayEntirePrice(int amount) {

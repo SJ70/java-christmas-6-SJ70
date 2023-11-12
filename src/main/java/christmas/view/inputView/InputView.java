@@ -3,7 +3,7 @@ package christmas.view.inputView;
 import static christmas.view.inputView.Messages.INPUT_ORDER;
 import static christmas.view.inputView.Messages.INPUT_VISIT_DATE;
 
-import christmas.domain.order.dto.OrderItemDTO;
+import christmas.dto.NameAndCountDTO;
 import christmas.view.Input;
 import christmas.view.Output;
 import java.util.List;
@@ -23,7 +23,7 @@ public class InputView {
         return inputNumber();
     }
 
-    public List<OrderItemDTO> inputOrder() {
+    public List<NameAndCountDTO> inputOrder() {
         output.display(INPUT_ORDER.getMessage());
         return OrderParser.parseOrder(input());
     }

@@ -6,7 +6,7 @@ import static christmas.domain.order.ErrorMessages.ONLY_BEVERAGES;
 import static christmas.domain.order.ErrorMessages.TOO_MANY_MENU_ITEMS_COUNT;
 
 import christmas.domain.menuItem.MenuItemType;
-import christmas.domain.order.dto.OrderItemDTO;
+import christmas.dto.NameAndCountDTO;
 import java.util.List;
 
 public class Order {
@@ -20,9 +20,9 @@ public class Order {
         this.order = order;
     }
 
-    public static Order fromOrderItemDTOs(List<OrderItemDTO> orderItemDTOs) {
-        List<OrderItem> order = orderItemDTOs.stream()
-                .map(OrderItem::fromOrderItemDTO)
+    public static Order fromNameAndCountDTOs(List<NameAndCountDTO> nameAndCountDTOS) {
+        List<OrderItem> order = nameAndCountDTOS.stream()
+                .map(OrderItem::fromNameAndCountDTO)
                 .toList();
         return new Order(order);
     }
@@ -55,9 +55,9 @@ public class Order {
         }
     }
 
-    public List<OrderItemDTO> getOrderItemDTOs() {
+    public List<NameAndCountDTO> getNameAndCountDTOs() {
         return order.stream()
-                .map(OrderItem::getOrderItemDTO)
+                .map(OrderItem::getNameAndCountDTO)
                 .toList();
     }
 

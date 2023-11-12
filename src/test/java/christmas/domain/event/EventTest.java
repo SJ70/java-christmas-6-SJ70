@@ -1,7 +1,7 @@
 package christmas.domain.event;
 
 import christmas.domain.order.Order;
-import christmas.domain.order.dto.OrderItemDTO;
+import christmas.dto.NameAndCountDTO;
 import java.time.LocalDate;
 import java.util.List;
 import org.assertj.core.api.Assertions;
@@ -18,9 +18,9 @@ class EventTest {
     @Nested
     class satisfyDefaultDate {
 
-        private final Order order = Order.fromOrderItemDTOs(
+        private final Order order = Order.fromNameAndCountDTOs(
                 List.of(
-                        new OrderItemDTO("양송이수프", 3)
+                        new NameAndCountDTO("양송이수프", 3)
                 )
         );
 
@@ -58,9 +58,9 @@ class EventTest {
         @Test
         void isNotSatisfyNotFor2023December() {
             // when
-            Order order = Order.fromOrderItemDTOs(
+            Order order = Order.fromNameAndCountDTOs(
                     List.of(
-                            new OrderItemDTO("아이스크림", 1)
+                            new NameAndCountDTO("아이스크림", 1)
                     )
             );
 
@@ -73,9 +73,9 @@ class EventTest {
         @Test
         void isSatisfyFor2023December() {
             // when
-            Order order = Order.fromOrderItemDTOs(
+            Order order = Order.fromNameAndCountDTOs(
                     List.of(
-                            new OrderItemDTO("아이스크림", 2)
+                            new NameAndCountDTO("아이스크림", 2)
                     )
             );
 

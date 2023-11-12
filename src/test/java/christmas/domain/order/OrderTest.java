@@ -5,7 +5,7 @@ import static christmas.domain.order.ErrorMessages.ONLY_BEVERAGES;
 import static christmas.domain.order.ErrorMessages.TOO_MANY_MENU_ITEMS_COUNT;
 
 import christmas.domain.menuItem.MenuItemType;
-import christmas.domain.order.dto.OrderItemDTO;
+import christmas.dto.NameAndCountDTO;
 import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -17,13 +17,13 @@ class OrderTest {
     @Test
     void createByDuplicatedMenuItem() {
         // given
-        List<OrderItemDTO> OrderItemDTOs = List.of(
-                new OrderItemDTO("양송이수프", 1),
-                new OrderItemDTO("양송이수프", 1)
+        List<NameAndCountDTO> nameAndCountDTOS = List.of(
+                new NameAndCountDTO("양송이수프", 1),
+                new NameAndCountDTO("양송이수프", 1)
         );
 
         // when & then
-        Assertions.assertThatThrownBy(() -> Order.fromOrderItemDTOs(OrderItemDTOs))
+        Assertions.assertThatThrownBy(() -> Order.fromNameAndCountDTOs(nameAndCountDTOS))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(DUPLICATED_MENU_ITEMS_COUNT.getMessage());
     }
@@ -32,14 +32,14 @@ class OrderTest {
     @Test
     void createByOnlyBeverages() {
         // given
-        List<OrderItemDTO> OrderItemDTOs = List.of(
-                new OrderItemDTO("제로콜라", 1),
-                new OrderItemDTO("레드와인", 1),
-                new OrderItemDTO("샴페인", 1)
+        List<NameAndCountDTO> nameAndCountDTOS = List.of(
+                new NameAndCountDTO("제로콜라", 1),
+                new NameAndCountDTO("레드와인", 1),
+                new NameAndCountDTO("샴페인", 1)
         );
 
         // when & then
-        Assertions.assertThatThrownBy(() -> Order.fromOrderItemDTOs(OrderItemDTOs))
+        Assertions.assertThatThrownBy(() -> Order.fromNameAndCountDTOs(nameAndCountDTOS))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ONLY_BEVERAGES.getMessage());
     }
@@ -48,14 +48,14 @@ class OrderTest {
     @Test
     void createByTooManyMenuItems() {
         // given
-        List<OrderItemDTO> OrderItemDTOs = List.of(
-                new OrderItemDTO("양송이수프", 10),
-                new OrderItemDTO("레드와인", 10),
-                new OrderItemDTO("샴페인", 1)
+        List<NameAndCountDTO> nameAndCountDTOS = List.of(
+                new NameAndCountDTO("양송이수프", 10),
+                new NameAndCountDTO("레드와인", 10),
+                new NameAndCountDTO("샴페인", 1)
         );
 
         // when & then
-        Assertions.assertThatThrownBy(() -> Order.fromOrderItemDTOs(OrderItemDTOs))
+        Assertions.assertThatThrownBy(() -> Order.fromNameAndCountDTOs(nameAndCountDTOS))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(TOO_MANY_MENU_ITEMS_COUNT.getMessage());
     }
@@ -64,14 +64,14 @@ class OrderTest {
     @Test
     void createByValidMenuItems() {
         // given
-        List<OrderItemDTO> OrderItemDTOs = List.of(
-                new OrderItemDTO("양송이수프", 2),
-                new OrderItemDTO("레드와인", 2),
-                new OrderItemDTO("샴페인", 1)
+        List<NameAndCountDTO> nameAndCountDTOS = List.of(
+                new NameAndCountDTO("양송이수프", 2),
+                new NameAndCountDTO("레드와인", 2),
+                new NameAndCountDTO("샴페인", 1)
         );
 
         // when & then
-        Assertions.assertThat(Order.fromOrderItemDTOs(OrderItemDTOs))
+        Assertions.assertThat(Order.fromNameAndCountDTOs(nameAndCountDTOS))
                 .isInstanceOf(Order.class);
     }
 
@@ -79,10 +79,10 @@ class OrderTest {
     @Test
     void getEntirePrice() {
         // given
-        Order order = Order.fromOrderItemDTOs(
+        Order order = Order.fromNameAndCountDTOs(
                 List.of(
-                        new OrderItemDTO("양송이수프", 2),
-                        new OrderItemDTO("레드와인", 1)
+                        new NameAndCountDTO("양송이수프", 2),
+                        new NameAndCountDTO("레드와인", 1)
                 )
         );
 
@@ -99,11 +99,11 @@ class OrderTest {
     @Test
     void countTypeOf() {
         // given
-        Order order = Order.fromOrderItemDTOs(
+        Order order = Order.fromNameAndCountDTOs(
                 List.of(
-                        new OrderItemDTO("양송이수프", 2),
-                        new OrderItemDTO("타파스", 3),
-                        new OrderItemDTO("레드와인", 1)
+                        new NameAndCountDTO("양송이수프", 2),
+                        new NameAndCountDTO("타파스", 3),
+                        new NameAndCountDTO("레드와인", 1)
                 )
         );
 

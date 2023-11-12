@@ -6,6 +6,7 @@ import static christmas.controller.ErrorMessages.INVALID_ORDER_INPUT;
 import christmas.domain.amount.Amount;
 import christmas.domain.order.Order;
 import christmas.domain.visitDate.VisitDate;
+import christmas.dto.NameAndCountDTO;
 import christmas.view.inputView.InputView;
 import christmas.view.outputView.OutputView;
 
@@ -23,7 +24,7 @@ public class PromotionController {
         outputView.displayWelcomeMessage();
         VisitDate visitDate = requestInputVisitDate();
         Order order = requestInputOrder();
-        outputView.displayOrder(order.getOrderItemDTOs());
+        outputView.displayOrder(order.getNameAndCountDTOs());
 
         Amount entirePrice = new Amount(order.getEntirePrice());
         outputView.displayEntirePrice(entirePrice.amount());
@@ -42,7 +43,7 @@ public class PromotionController {
     private Order requestInputOrder() {
         while (true) {
             try {
-                return Order.fromOrderItemDTOs(inputView.inputOrder());
+                return Order.fromNameAndCountDTOs(inputView.inputOrder());
             } catch (IllegalArgumentException e) {
                 outputView.displayError(INVALID_ORDER_INPUT.getMessage());
             }

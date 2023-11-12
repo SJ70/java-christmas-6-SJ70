@@ -2,7 +2,7 @@ package christmas.view.inputView;
 
 import static christmas.view.inputView.ErrorMessages.INVALID_ORDER_ITEM_REGEX;
 
-import christmas.domain.order.dto.OrderItemDTO;
+import christmas.dto.NameAndCountDTO;
 import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -29,16 +29,16 @@ public class OrderParserTest {
         String value = "문자열A-1,문자열b-2,문자열3-3";
 
         // when
-        List<OrderItemDTO> order = OrderParser.parseOrder(value);
-        List<OrderItemDTO> expectedOrderItemDto = List.of(
-                new OrderItemDTO("문자열A", 1),
-                new OrderItemDTO("문자열b", 2),
-                new OrderItemDTO("문자열3", 3)
+        List<NameAndCountDTO> order = OrderParser.parseOrder(value);
+        List<NameAndCountDTO> expectedNameAndCountDto = List.of(
+                new NameAndCountDTO("문자열A", 1),
+                new NameAndCountDTO("문자열b", 2),
+                new NameAndCountDTO("문자열3", 3)
         );
 
         // when & then
         Assertions.assertThat(order)
-                .isEqualTo(expectedOrderItemDto);
+                .isEqualTo(expectedNameAndCountDto);
     }
 
 }

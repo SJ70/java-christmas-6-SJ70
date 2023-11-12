@@ -1,20 +1,20 @@
 package christmas.view.outputView;
 
-import christmas.domain.order.dto.OrderItemDTO;
+import christmas.dto.NameAndCountDTO;
 import java.util.List;
 import java.util.stream.Collectors;
 
-class OrderFormatter {
+class NameAndCountFormatter {
 
     private static final String ORDER_MESSAGE_FORMAT = "%s %d개";
 
-    public static String formatOrderMessage(List<OrderItemDTO> order) {
+    public static String formatNameAndCountMessages(List<NameAndCountDTO> order) {
         return order.stream()
-                .map(OrderFormatter::formatOrderItemMessage)
+                .map(NameAndCountFormatter::formatNameAndCountMessage)
                 .collect(Collectors.joining("\n"));
     }
 
-    private static String formatOrderItemMessage(OrderItemDTO orderItem) {
+    private static String formatNameAndCountMessage(NameAndCountDTO orderItem) {
         return String.format(ORDER_MESSAGE_FORMAT, orderItem.menuName(), orderItem.count());
     }
 

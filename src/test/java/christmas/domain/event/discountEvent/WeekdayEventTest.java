@@ -1,7 +1,7 @@
 package christmas.domain.event.discountEvent;
 
 import christmas.domain.order.Order;
-import christmas.domain.order.dto.OrderItemDTO;
+import christmas.dto.NameAndCountDTO;
 import java.time.LocalDate;
 import java.util.List;
 import org.assertj.core.api.Assertions;
@@ -13,14 +13,14 @@ public class WeekdayEventTest {
 
     private final WeekdayEvent WEEKDAY_EVENT = new WeekdayEvent();
 
-    private final Order ORDER = Order.fromOrderItemDTOs(
+    private final Order ORDER = Order.fromNameAndCountDTOs(
             List.of(
-                    new OrderItemDTO("양송이수프", 1),
-                    new OrderItemDTO("티본스테이크", 2),
-                    new OrderItemDTO("제로콜라", 3),
+                    new NameAndCountDTO("양송이수프", 1),
+                    new NameAndCountDTO("티본스테이크", 2),
+                    new NameAndCountDTO("제로콜라", 3),
                     // 디저트
-                    new OrderItemDTO("초코케이크", 1),
-                    new OrderItemDTO("아이스크림", 2)
+                    new NameAndCountDTO("초코케이크", 1),
+                    new NameAndCountDTO("아이스크림", 2)
             )
     );
     private final int YEAR = 2023;

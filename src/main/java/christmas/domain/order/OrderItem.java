@@ -5,7 +5,7 @@ import static christmas.domain.order.ErrorMessages.TOO_LEAST_MENU_ITEM_COUNT;
 
 import christmas.domain.menuItem.MenuItem;
 import christmas.domain.menuItem.MenuItemType;
-import christmas.domain.order.dto.OrderItemDTO;
+import christmas.dto.NameAndCountDTO;
 
 public class OrderItem {
 
@@ -18,10 +18,10 @@ public class OrderItem {
         this.count = count;
     }
 
-    public static OrderItem fromOrderItemDTO(OrderItemDTO orderItemDTO) {
+    public static OrderItem fromNameAndCountDTO(NameAndCountDTO nameAndCountDTO) {
         return new OrderItem(
-                orderItemDTO.menuName(),
-                orderItemDTO.count()
+                nameAndCountDTO.menuName(),
+                nameAndCountDTO.count()
         );
     }
 
@@ -47,8 +47,8 @@ public class OrderItem {
         return menuItem.getPrice() * count;
     }
 
-    public OrderItemDTO getOrderItemDTO() {
-        return new OrderItemDTO(menuItem.getName(), count);
+    public NameAndCountDTO getNameAndCountDTO() {
+        return new NameAndCountDTO(menuItem.getName(), count);
     }
 
     public int getCount() {

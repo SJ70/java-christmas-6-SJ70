@@ -1,7 +1,7 @@
 package christmas.domain.event.discountEvent;
 
 import christmas.domain.order.Order;
-import christmas.domain.order.dto.OrderItemDTO;
+import christmas.dto.NameAndCountDTO;
 import java.time.LocalDate;
 import java.util.List;
 import org.assertj.core.api.Assertions;
@@ -13,9 +13,9 @@ public class SpecialEventTest {
 
     private final SpecialEvent SPECIAL_EVENT = new SpecialEvent();
 
-    private final Order ORDER = Order.fromOrderItemDTOs(
+    private final Order ORDER = Order.fromNameAndCountDTOs(
             List.of(
-                    new OrderItemDTO("양송이수프", 10)
+                    new NameAndCountDTO("양송이수프", 10)
             )
     );
     private final int YEAR = 2023;

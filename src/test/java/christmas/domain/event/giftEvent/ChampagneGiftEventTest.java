@@ -2,7 +2,7 @@ package christmas.domain.event.giftEvent;
 
 import christmas.domain.menuItem.MenuItem;
 import christmas.domain.order.Order;
-import christmas.domain.order.dto.OrderItemDTO;
+import christmas.dto.NameAndCountDTO;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -19,9 +19,9 @@ class ChampagneGiftEventTest {
     @Test
     void getGiftFail() {
         // given
-        Order order = Order.fromOrderItemDTOs(
+        Order order = Order.fromNameAndCountDTOs(
                 List.of(
-                        new OrderItemDTO("양송이수프", 1)
+                        new NameAndCountDTO("양송이수프", 1)
                 )
         );
 
@@ -37,9 +37,9 @@ class ChampagneGiftEventTest {
     @Test
     void getGift() {
         // given
-        Order order = Order.fromOrderItemDTOs(
+        Order order = Order.fromNameAndCountDTOs(
                 List.of(
-                        new OrderItemDTO("양송이수프", 20)
+                        new NameAndCountDTO("양송이수프", 20)
                 )
         );
 
@@ -47,7 +47,7 @@ class ChampagneGiftEventTest {
         Optional<MenuItem> gift = CHAMPAGNE_GIFT_EVENT.getGiftMenuItem(order, DATE);
 
         // then
-        Assertions.assertThat(gift)
+        Assertions.assertThat(gift.get())
                 .isEqualTo(MenuItem.CHAMPAGNE);
     }
 
