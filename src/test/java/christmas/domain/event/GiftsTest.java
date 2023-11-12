@@ -1,6 +1,5 @@
 package christmas.domain.event;
 
-import christmas.domain.event.Gifts;
 import christmas.domain.menuItem.MenuItem;
 import christmas.dto.NameAndCountDTO;
 import java.util.List;

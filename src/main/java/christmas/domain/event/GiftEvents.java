@@ -11,7 +11,7 @@ import java.util.Optional;
 
 public enum GiftEvents {
 
-    CHAMPAGNE_GIFT_EVENT("증정 이벤트", new ChampagneGiftEvent());
+    CHAMPAGNE_GIFT_EVENT("샴페인 증정 이벤트", new ChampagneGiftEvent());
 
     private final String title;
     private final GiftEvent event;

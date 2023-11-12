@@ -1,6 +1,7 @@
 package christmas.domain.event;
 
 import christmas.domain.menuItem.MenuItem;
+import christmas.dto.EventDiscountAmountDTO;
 import christmas.dto.NameAndCountDTO;
 import java.util.List;
 
@@ -24,6 +25,12 @@ public class Gifts {
                                 .count()
                 ))
                 .toList();
+    }
+
+    public int getEntireDiscount() {
+        return gifts.stream()
+                .mapToInt(MenuItem::getPrice)
+                .sum();
     }
 
 }
