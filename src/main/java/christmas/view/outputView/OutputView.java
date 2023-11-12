@@ -4,8 +4,10 @@ import static christmas.view.outputView.Messages.DISCOUNT_DETAILS;
 import static christmas.view.outputView.Messages.ENTIRE_PRICE;
 import static christmas.view.outputView.Messages.GIFTS;
 import static christmas.view.outputView.Messages.ORDER;
+import static christmas.view.outputView.Messages.TOTAL_DISCOUNT_AMOUNT;
 import static christmas.view.outputView.Messages.WELCOME;
 
+import christmas.domain.amount.Amount;
 import christmas.dto.EventDiscountAmountsDTO;
 import christmas.dto.NameAndCountDTO;
 import christmas.view.Output;
@@ -41,6 +43,11 @@ public class OutputView {
     public void displayDiscountAmounts(EventDiscountAmountsDTO discountAmounts) {
         output.display(DISCOUNT_DETAILS.getMessage());
         output.display(EventDiscountAmountFormatter.format(discountAmounts));
+    }
+
+    public void displayTotalDiscountAmount(int totalDiscountEventDiscountAmount, int totalGiftEventDiscountAmount) {
+        output.display(TOTAL_DISCOUNT_AMOUNT.getMessage());
+        output.display(new Amount(- totalDiscountEventDiscountAmount - totalGiftEventDiscountAmount).toString());
     }
 
     public void displayError(String message) {

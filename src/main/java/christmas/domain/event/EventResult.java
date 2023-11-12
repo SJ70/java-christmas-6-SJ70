@@ -41,4 +41,12 @@ public class EventResult {
         return new EventDiscountAmountDTO(GIFT_EVENT_TITLE, gifts.getEntireDiscount());
     }
 
+    public int getTotalDiscountEventDiscountAmount() {
+        return discountEventDiscountAmounts.getTotalAmount();
+    }
+
+    public int getTotalGiftEventDiscountAmount() {
+        return gifts.getEntireDiscount();
+    }
+
 }

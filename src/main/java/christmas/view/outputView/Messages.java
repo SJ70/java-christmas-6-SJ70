@@ -7,6 +7,7 @@ enum Messages {
     ENTIRE_PRICE("\n<할인 전 총주문 금액>"),
     GIFTS("\n<증정품>"),
     DISCOUNT_DETAILS("\n<혜택 내역>"),
+    TOTAL_DISCOUNT_AMOUNT("\n<총혜택 금액>"),
     NOTHING("없음");
 
     private final String message;

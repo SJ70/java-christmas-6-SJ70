@@ -7,6 +7,7 @@ import christmas.domain.amount.Amount;
 import christmas.domain.event.EventResult;
 import christmas.domain.order.Order;
 import christmas.domain.visitDate.VisitDate;
+import christmas.dto.EventDiscountAmountsDTO;
 import christmas.view.inputView.InputView;
 import christmas.view.outputView.OutputView;
 
@@ -33,7 +34,12 @@ public class PromotionController {
         EventResult eventResult = EventResult.ofOrderAndDate(order, visitDate.getDate());
         outputView.displayGifts(eventResult.getGiftsNameAndCount());
 
-        outputView.displayDiscountAmounts(eventResult.getEntireEventDiscountAmounts());
+        EventDiscountAmountsDTO eventDiscountAmountsDTO = eventResult.getEntireEventDiscountAmounts();
+        outputView.displayDiscountAmounts(eventDiscountAmountsDTO);
+
+        int totalDiscountEventDiscountAmount = eventResult.getTotalDiscountEventDiscountAmount();
+        int totalGiftEventDiscountAmount = eventResult.getTotalGiftEventDiscountAmount();
+        outputView.displayTotalDiscountAmount(totalDiscountEventDiscountAmount, totalGiftEventDiscountAmount);
 
     }
 
