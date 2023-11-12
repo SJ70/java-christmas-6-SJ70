@@ -1,5 +1,6 @@
 package christmas.view.outputView;
 
+import static christmas.view.outputView.Messages.NOTHING;
 
 import christmas.dto.NameAndCountDTO;
 import java.util.List;
@@ -9,9 +10,9 @@ import org.junit.jupiter.api.Test;
 
 class NameAndCountFormatterTest {
 
-    @DisplayName("주문 내역 문자열 포맷을 올바르게 수행한다.")
+    @DisplayName("이름과 수량 문자열 포맷을 올바르게 수행한다.")
     @Test
-    void formatMenuNameCountMessageSuccess() {
+    void formatNameAndCountMessageSuccess() {
         // given
         List<NameAndCountDTO> order = List.of(
                 new NameAndCountDTO("음식1", 1),
@@ -26,6 +27,20 @@ class NameAndCountFormatterTest {
         // then
         Assertions.assertThat(result)
                 .isEqualTo(expectedResult);
+    }
+
+    @DisplayName("항목이 없다면 '없음'을 반환한다.")
+    @Test
+    void formatNothing() {
+        // given
+        List<NameAndCountDTO> order = List.of();
+
+        // when
+        String result = NameAndCountFormatter.formatNameAndCountMessages(order);
+
+        // then
+        Assertions.assertThat(result)
+                .isEqualTo(NOTHING.getMessage());
     }
 
 }

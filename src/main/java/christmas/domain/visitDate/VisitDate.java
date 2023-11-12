@@ -24,4 +24,8 @@ public class VisitDate {
         }
     }
 
+    public LocalDate getDate() {
+        return date;
+    }
+
 }

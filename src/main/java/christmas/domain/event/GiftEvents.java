@@ -21,12 +21,13 @@ public enum GiftEvents {
         this.event = event;
     }
 
-    public static List<MenuItem> getGifts(Order order, LocalDate date) {
-        return Arrays.stream(values())
+    public static Gifts getGifts(Order order, LocalDate date) {
+        List<MenuItem> gifts = Arrays.stream(values())
                 .map(giftEvent -> giftEvent.event.getGiftMenuItem(order, date))
                 .filter(Optional::isPresent)
                 .map(Optional::get)
                 .toList();
+        return new Gifts(gifts);
     }
 
 }

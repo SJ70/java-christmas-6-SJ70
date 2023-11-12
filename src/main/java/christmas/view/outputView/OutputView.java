@@ -1,5 +1,7 @@
 package christmas.view.outputView;
 
+import static christmas.view.outputView.Messages.ENTIRE_PRICE;
+import static christmas.view.outputView.Messages.GIFTS;
 import static christmas.view.outputView.Messages.ORDER;
 import static christmas.view.outputView.Messages.WELCOME;
 
@@ -22,6 +24,11 @@ public class OutputView {
     public void displayOrder(List<NameAndCountDTO> order) {
         output.display(ORDER.getMessage());
         output.display(NameAndCountFormatter.formatNameAndCountMessages(order));
+    }
+
+    public void displayGifts(List<NameAndCountDTO> gifts) {
+        output.display(GIFTS.getMessage());
+        output.display(NameAndCountFormatter.formatNameAndCountMessages(gifts));
     }
 
     public void displayEntirePrice(String amount) {
