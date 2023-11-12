@@ -24,8 +24,9 @@ public class OutputView {
         output.display(NameAndCountFormatter.formatNameAndCountMessages(order));
     }
 
-    public void displayEntirePrice(int amount) {
-        output.display(ORDER.getMessage());
+    public void displayEntirePrice(String amount) {
+        output.display(ENTIRE_PRICE.getMessage());
+        output.display(amount);
     }
 
     public void displayError(String message) {
