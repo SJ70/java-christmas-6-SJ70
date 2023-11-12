@@ -4,6 +4,7 @@ import static christmas.view.outputView.Messages.DISCOUNT_DETAILS;
 import static christmas.view.outputView.Messages.ENTIRE_PRICE;
 import static christmas.view.outputView.Messages.GIFTS;
 import static christmas.view.outputView.Messages.ORDER;
+import static christmas.view.outputView.Messages.PAYMENT_AMOUNT;
 import static christmas.view.outputView.Messages.TOTAL_DISCOUNT_AMOUNT;
 import static christmas.view.outputView.Messages.WELCOME;
 
@@ -48,6 +49,11 @@ public class OutputView {
     public void displayTotalDiscountAmount(int totalDiscountEventDiscountAmount, int totalGiftEventDiscountAmount) {
         output.display(TOTAL_DISCOUNT_AMOUNT.getMessage());
         output.display(new Amount(- totalDiscountEventDiscountAmount - totalGiftEventDiscountAmount).toString());
+    }
+
+    public void displayPaymentAmount(int entirePrice, int totalDiscountEventDiscountAmount) {
+        output.display(PAYMENT_AMOUNT.getMessage());
+        output.display(new Amount(entirePrice - totalDiscountEventDiscountAmount).toString());
     }
 
     public void displayError(String message) {

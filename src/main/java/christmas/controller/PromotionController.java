@@ -40,7 +40,7 @@ public class PromotionController {
         int totalDiscountEventDiscountAmount = eventResult.getTotalDiscountEventDiscountAmount();
         int totalGiftEventDiscountAmount = eventResult.getTotalGiftEventDiscountAmount();
         outputView.displayTotalDiscountAmount(totalDiscountEventDiscountAmount, totalGiftEventDiscountAmount);
-
+        outputView.displayPaymentAmount(entirePrice.amount(), totalDiscountEventDiscountAmount);
     }
 
     private VisitDate requestInputVisitDate() {
