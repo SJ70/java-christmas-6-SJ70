@@ -3,6 +3,7 @@ package christmas.controller;
 import static christmas.controller.ErrorMessages.INVALID_DATE_INPUT;
 import static christmas.controller.ErrorMessages.INVALID_ORDER_INPUT;
 
+import christmas.domain.badge.Badge;
 import christmas.domain.amount.Amount;
 import christmas.domain.event.EventResult;
 import christmas.domain.order.Order;
@@ -41,6 +42,10 @@ public class PromotionController {
         int totalGiftEventDiscountAmount = eventResult.getTotalGiftEventDiscountAmount();
         outputView.displayTotalDiscountAmount(totalDiscountEventDiscountAmount, totalGiftEventDiscountAmount);
         outputView.displayPaymentAmount(entirePrice.amount(), totalDiscountEventDiscountAmount);
+
+        int totalBenefitAmount = totalDiscountEventDiscountAmount + totalGiftEventDiscountAmount;
+        Badge badge = Badge.fromBenefitAmount(totalBenefitAmount);
+        outputView.displayBadge(badge.getName());
     }
 
     private VisitDate requestInputVisitDate() {

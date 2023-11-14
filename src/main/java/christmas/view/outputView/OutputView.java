@@ -1,5 +1,6 @@
 package christmas.view.outputView;
 
+import static christmas.view.outputView.Messages.BADGE;
 import static christmas.view.outputView.Messages.DISCOUNT_DETAILS;
 import static christmas.view.outputView.Messages.ENTIRE_PRICE;
 import static christmas.view.outputView.Messages.GIFTS;
@@ -54,6 +55,11 @@ public class OutputView {
     public void displayPaymentAmount(int entirePrice, int totalDiscountEventDiscountAmount) {
         output.display(PAYMENT_AMOUNT.getMessage());
         output.display(new Amount(entirePrice - totalDiscountEventDiscountAmount).toString());
+    }
+
+    public void displayBadge(String badgeName) {
+        output.display(BADGE.getMessage());
+        output.display(badgeName);
     }
 
     public void displayError(String message) {

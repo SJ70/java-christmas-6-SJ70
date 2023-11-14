@@ -9,6 +9,7 @@ enum Messages {
     DISCOUNT_DETAILS("\n<혜택 내역>"),
     TOTAL_DISCOUNT_AMOUNT("\n<총혜택 금액>"),
     PAYMENT_AMOUNT("\n<할인 후 예상 결제 금액>"),
+    BADGE("\n<12월 이벤트 배지>"),
     NOTHING("없음");
 
     private final String message;
