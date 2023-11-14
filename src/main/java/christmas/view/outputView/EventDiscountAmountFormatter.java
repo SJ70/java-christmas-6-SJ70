@@ -5,7 +5,9 @@ import static christmas.view.outputView.Messages.NOTHING;
 import christmas.domain.amount.Amount;
 import christmas.dto.EventDiscountAmountDTO;
 import christmas.dto.EventDiscountAmountsDTO;
+import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class EventDiscountAmountFormatter {
 
@@ -15,9 +17,9 @@ public class EventDiscountAmountFormatter {
         if (eventDiscountAmountsDTO.isEmpty()) {
             return NOTHING.getMessage();
         }
-        return eventDiscountAmountsDTO.discountAmountDTOs()
+        return eventDiscountAmountsDTO
+                .discountAmountDTOs()
                 .stream()
-                .filter(eventDiscountAmountDTO -> eventDiscountAmountDTO.amount() > 0)
                 .map(EventDiscountAmountFormatter::format)
                 .collect(Collectors.joining("\n"));
     }

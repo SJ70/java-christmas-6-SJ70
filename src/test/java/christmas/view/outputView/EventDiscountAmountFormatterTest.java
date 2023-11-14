@@ -26,7 +26,7 @@ class EventDiscountAmountFormatterTest {
 
         // when
         String result = EventDiscountAmountFormatter.format(eventDiscountAmountsDTO);
-        String expectedResult = "이벤트1: -1,000원\n이벤트3: -3,000원";
+        String expectedResult = "이벤트1: -1,000원\n이벤트2: -0원\n이벤트3: -3,000원";
 
         // then
         Assertions.assertThat(result)

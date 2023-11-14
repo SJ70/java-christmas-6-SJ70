@@ -38,7 +38,7 @@ public class PromotionController {
         outputView.displayGifts(eventResult.getGiftsNameAndCount());
 
         EventDiscountAmountsDTO eventDiscountAmountsDTO = eventResult.getEntireEventDiscountAmounts();
-        outputView.displayDiscountAmounts(eventDiscountAmountsDTO);
+        outputView.displayDiscountAmounts(eventDiscountAmountsDTO.filterHasBenefit());
 
         int totalDiscountEventDiscountAmount = eventResult.getTotalDiscountEventDiscountAmount();
         int totalGiftEventDiscountAmount = eventResult.getTotalGiftEventDiscountAmount();
