@@ -29,6 +29,8 @@ public class PromotionController {
         Order order = requestInputOrder();
         outputView.displayOrder(order.getNameAndCountDTOs());
 
+        outputView.displayPreviewMessage(visitDate.getDate());
+
         Amount entirePrice = new Amount(order.getEntirePrice());
         outputView.displayEntirePrice(entirePrice.toString());
 
