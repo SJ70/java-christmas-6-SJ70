@@ -2,12 +2,9 @@ package christmas.view.outputView;
 
 import static christmas.view.outputView.Messages.NOTHING;
 
-import christmas.domain.amount.Amount;
 import christmas.dto.EventDiscountAmountDTO;
 import christmas.dto.EventDiscountAmountsDTO;
-import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class EventDiscountAmountFormatter {
 
@@ -28,7 +25,7 @@ public class EventDiscountAmountFormatter {
         return String.format(
                 MESSAGE_FORMAT,
                 eventDiscountAmountDTO.eventName(),
-                new Amount(eventDiscountAmountDTO.amount())
+                MoneyFormatter.format(eventDiscountAmountDTO.amount())
         );
     }
 

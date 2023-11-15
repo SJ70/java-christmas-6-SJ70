@@ -10,7 +10,6 @@ import static christmas.view.outputView.Messages.PREVIEW_FORMAT;
 import static christmas.view.outputView.Messages.TOTAL_DISCOUNT_AMOUNT;
 import static christmas.view.outputView.Messages.WELCOME;
 
-import christmas.domain.amount.Amount;
 import christmas.dto.EventDiscountAmountsDTO;
 import christmas.dto.NameAndCountDTO;
 import christmas.view.Output;
@@ -43,9 +42,9 @@ public class OutputView {
         output.display(NameAndCountFormatter.formatNameAndCountMessages(gifts));
     }
 
-    public void displayEntirePrice(String amount) {
+    public void displayEntirePrice(int amount) {
         output.display(ENTIRE_PRICE.getMessage());
-        output.display(amount);
+        output.display(MoneyFormatter.format(amount));
     }
 
     public void displayDiscountAmounts(EventDiscountAmountsDTO discountAmounts) {
@@ -55,12 +54,14 @@ public class OutputView {
 
     public void displayTotalDiscountAmount(int totalDiscountEventDiscountAmount, int totalGiftEventDiscountAmount) {
         output.display(TOTAL_DISCOUNT_AMOUNT.getMessage());
-        output.display(new Amount(- totalDiscountEventDiscountAmount - totalGiftEventDiscountAmount).toString());
+        int totalDiscountAmount = totalDiscountEventDiscountAmount + totalGiftEventDiscountAmount;
+        output.display(MoneyFormatter.format(-totalDiscountAmount));
     }
 
     public void displayPaymentAmount(int entirePrice, int totalDiscountEventDiscountAmount) {
         output.display(PAYMENT_AMOUNT.getMessage());
-        output.display(new Amount(entirePrice - totalDiscountEventDiscountAmount).toString());
+        int paymentAmount = entirePrice - totalDiscountEventDiscountAmount;
+        output.display(MoneyFormatter.format(paymentAmount));
     }
 
     public void displayBadge(String badgeName) {

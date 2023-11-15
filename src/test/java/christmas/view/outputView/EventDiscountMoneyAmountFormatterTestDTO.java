@@ -10,7 +10,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class EventDiscountAmountFormatterTest {
+class EventDiscountMoneyAmountFormatterTestDTO {
 
     @DisplayName("이름과 금액 문자열 포맷을 올바르게 수행한다.")
     @Test

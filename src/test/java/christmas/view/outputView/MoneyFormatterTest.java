@@ -1,11 +1,11 @@
-package christmas.domain.amount;
+package christmas.view.outputView;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-class AmountTest {
+class MoneyFormatterTest {
 
     @DisplayName("돈을 형식에 맞게 포맷한다.")
     @ParameterizedTest
@@ -15,7 +15,7 @@ class AmountTest {
     )
     void toStringTest(int amount, String expectedResult) {
         // when
-        String result = new Amount(amount).toString();
+        String result = MoneyFormatter.format(amount);
 
         // then
         Assertions.assertThat(result)

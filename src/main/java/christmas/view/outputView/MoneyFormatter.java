@@ -1,13 +1,12 @@
-package christmas.domain.amount;
+package christmas.view.outputView;
 
 import java.text.DecimalFormat;
 
-public record Amount(int amount) {
+public final class MoneyFormatter {
 
     private static final DecimalFormat MONEY_FORMAT = new DecimalFormat("###,###,###원");
 
-    @Override
-    public String toString() {
+    public static String format(int amount) {
         return MONEY_FORMAT.format(amount);
     }
 
