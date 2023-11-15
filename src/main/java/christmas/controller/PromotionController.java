@@ -26,9 +26,10 @@ public class PromotionController {
 
         VisitDate visitDate = requestInputVisitDate();
         Order order = requestInputOrder();
-        outputView.displayOrder(order.getNameAndCountDTOs());
 
         outputView.displayPreviewMessage(visitDate.getDate());
+
+        outputView.displayOrder(order.getNameAndCountDTOs());
 
         int entirePrice = order.getEntirePrice();
         outputView.displayEntirePrice(entirePrice);
