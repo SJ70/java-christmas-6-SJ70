@@ -6,7 +6,7 @@ import christmas.dto.EventDiscountAmountDTO;
 import christmas.dto.EventDiscountAmountsDTO;
 import java.util.stream.Collectors;
 
-public class EventDiscountAmountFormatter {
+final class EventDiscountAmountFormatter {
 
     private static final String MESSAGE_FORMAT = "%s: -%s";
 

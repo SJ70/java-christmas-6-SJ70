@@ -40,7 +40,7 @@ class EventDiscountMoneyAmountFormatterTestDTO {
         List<NameAndCountDTO> order = List.of();
 
         // when
-        String result = NameAndCountFormatter.formatNameAndCountMessages(order);
+        String result = NameAndCountFormatter.format(order);
 
         // then
         Assertions.assertThat(result)

@@ -21,7 +21,7 @@ class NameAndCountFormatterTest {
         );
 
         // when
-        String result = NameAndCountFormatter.formatNameAndCountMessages(order);
+        String result = NameAndCountFormatter.format(order);
         String expectedResult = "음식1 1개\n음식2 2개\n음식3 3개";
 
         // then
@@ -36,7 +36,7 @@ class NameAndCountFormatterTest {
         List<NameAndCountDTO> order = List.of();
 
         // when
-        String result = NameAndCountFormatter.formatNameAndCountMessages(order);
+        String result = NameAndCountFormatter.format(order);
 
         // then
         Assertions.assertThat(result)

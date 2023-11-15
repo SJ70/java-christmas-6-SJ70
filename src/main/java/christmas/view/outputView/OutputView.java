@@ -31,7 +31,7 @@ public class OutputView {
 
     public void displayOrder(List<NameAndCountDTO> order) {
         displayTitle(ORDER.getMessage());
-        output.display(NameAndCountFormatter.formatNameAndCountMessages(order));
+        output.display(NameAndCountFormatter.format(order));
     }
 
     public void displayPreviewMessage(LocalDate date) {
@@ -40,7 +40,7 @@ public class OutputView {
 
     public void displayGifts(List<NameAndCountDTO> gifts) {
         displayTitle(GIFTS.getMessage());
-        output.display(NameAndCountFormatter.formatNameAndCountMessages(gifts));
+        output.display(NameAndCountFormatter.format(gifts));
     }
 
     public void displayEntirePrice(int amount) {
