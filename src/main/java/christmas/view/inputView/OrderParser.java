@@ -12,12 +12,13 @@ class OrderParser {
 
     private static final String ORDER_DELIMITER = ",";
 
-    private static final String ORDER_ITEM_REGEX = "^([가-힣0-9a-zA-Z]+)-(\\d+)$";
+    private static final String ORDER_ITEM_REGEX = "^([가-힣0-9a-zA-Z ]+)-(\\d+)$";
     private static final Pattern ORDER_ITEM_PATTERN = Pattern.compile(ORDER_ITEM_REGEX);
 
     public static List<NameAndCountDTO> parseOrder(String value) {
         String[] values = value.split(ORDER_DELIMITER);
         return Arrays.stream(values)
+                .map(String::trim)
                 .map(OrderParser::parseOrderItem)
                 .toList();
     }

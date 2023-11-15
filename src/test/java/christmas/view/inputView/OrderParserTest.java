@@ -26,7 +26,7 @@ public class OrderParserTest {
     @Test
     void parseOrderWithValidValue() {
         // given
-        String value = "문자열A-1,문자열b-2,문자열3-3";
+        String value = " 문자열A-1,문자열b-2 , 문자열3-3 ";
 
         // when
         List<NameAndCountDTO> order = OrderParser.parseOrder(value);
