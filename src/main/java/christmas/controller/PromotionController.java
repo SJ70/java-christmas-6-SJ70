@@ -23,31 +23,14 @@ public class PromotionController {
 
     public void run() {
         outputView.displayWelcomeMessage();
-
         VisitDate visitDate = requestInputVisitDate();
         Order order = requestInputOrder();
-
         outputView.displayPreviewMessage(visitDate.getDate());
-
-        outputView.displayOrder(order.getNameAndCountDTOs());
-
-        int entirePrice = order.getEntirePrice();
-        outputView.displayEntirePrice(entirePrice);
+        displayOrderSummary(order);
 
         EventResult eventResult = EventResult.ofOrderAndDate(order, visitDate.getDate());
-        outputView.displayGifts(eventResult.getGiftsNameAndCount());
-
-        EventDiscountAmountsDTO eventDiscountAmountsDTO = eventResult.getEntireEventDiscountAmounts();
-        outputView.displayDiscountAmounts(eventDiscountAmountsDTO.filterHasBenefit());
-
-        int totalDiscountEventDiscountAmount = eventResult.getTotalDiscountEventDiscountAmount();
-        int totalGiftEventDiscountAmount = eventResult.getTotalGiftEventDiscountAmount();
-        outputView.displayTotalDiscountAmount(totalDiscountEventDiscountAmount, totalGiftEventDiscountAmount);
-        outputView.displayPaymentAmount(entirePrice, totalDiscountEventDiscountAmount);
-
-        int totalBenefitAmount = totalDiscountEventDiscountAmount + totalGiftEventDiscountAmount;
-        Badge badge = Badge.fromBenefitAmount(totalBenefitAmount);
-        outputView.displayBadge(badge.getName());
+        displayBenefits(order, eventResult);
+        displayBadge(eventResult);
     }
 
     private VisitDate requestInputVisitDate() {
@@ -68,6 +51,30 @@ public class PromotionController {
                 outputView.displayError(INVALID_ORDER_INPUT.getMessage());
             }
         }
+    }
+
+    private void displayOrderSummary(Order order) {
+        outputView.displayOrder(order.getNameAndCountDTOs());
+        outputView.displayEntirePrice(order.getEntirePrice());
+    }
+
+    private void displayBenefits(Order order, EventResult eventResult) {
+        outputView.displayGifts(eventResult.getGiftsNameAndCount());
+
+        EventDiscountAmountsDTO eventDiscountAmountsDTO = eventResult.getEntireEventDiscountAmounts();
+        outputView.displayDiscountAmounts(eventDiscountAmountsDTO.filterHasBenefit());
+
+        int entirePrice = order.getEntirePrice();
+        int totalDiscountEventDiscountAmount = eventResult.getTotalDiscountEventDiscountAmount();
+        int totalGiftEventDiscountAmount = eventResult.getTotalGiftEventDiscountAmount();
+        outputView.displayTotalDiscountAmount(totalDiscountEventDiscountAmount, totalGiftEventDiscountAmount);
+        outputView.displayPaymentAmount(entirePrice, totalDiscountEventDiscountAmount);
+    }
+
+    private void displayBadge(EventResult eventResult) {
+        int totalBenefitAmount = eventResult.getTotalBenefitAmount();
+        Badge badge = Badge.fromBenefitAmount(totalBenefitAmount);
+        outputView.displayBadge(badge.getName());
     }
 
 }
