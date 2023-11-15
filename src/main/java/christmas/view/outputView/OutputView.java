@@ -7,6 +7,7 @@ import static christmas.view.outputView.Messages.GIFTS;
 import static christmas.view.outputView.Messages.ORDER;
 import static christmas.view.outputView.Messages.PAYMENT_AMOUNT;
 import static christmas.view.outputView.Messages.PREVIEW_FORMAT;
+import static christmas.view.outputView.Messages.TITLE_FORMAT;
 import static christmas.view.outputView.Messages.TOTAL_DISCOUNT_AMOUNT;
 import static christmas.view.outputView.Messages.WELCOME;
 
@@ -29,7 +30,7 @@ public class OutputView {
     }
 
     public void displayOrder(List<NameAndCountDTO> order) {
-        output.display(ORDER.getMessage());
+        displayTitle(ORDER.getMessage());
         output.display(NameAndCountFormatter.formatNameAndCountMessages(order));
     }
 
@@ -38,35 +39,39 @@ public class OutputView {
     }
 
     public void displayGifts(List<NameAndCountDTO> gifts) {
-        output.display(GIFTS.getMessage());
+        displayTitle(GIFTS.getMessage());
         output.display(NameAndCountFormatter.formatNameAndCountMessages(gifts));
     }
 
     public void displayEntirePrice(int amount) {
-        output.display(ENTIRE_PRICE.getMessage());
+        displayTitle(ENTIRE_PRICE.getMessage());
         output.display(MoneyFormatter.format(amount));
     }
 
     public void displayDiscountAmounts(EventDiscountAmountsDTO discountAmounts) {
-        output.display(DISCOUNT_DETAILS.getMessage());
+        displayTitle(DISCOUNT_DETAILS.getMessage());
         output.display(EventDiscountAmountFormatter.format(discountAmounts));
     }
 
     public void displayTotalDiscountAmount(int totalDiscountEventDiscountAmount, int totalGiftEventDiscountAmount) {
-        output.display(TOTAL_DISCOUNT_AMOUNT.getMessage());
+        displayTitle(TOTAL_DISCOUNT_AMOUNT.getMessage());
         int totalDiscountAmount = totalDiscountEventDiscountAmount + totalGiftEventDiscountAmount;
         output.display(MoneyFormatter.format(-totalDiscountAmount));
     }
 
     public void displayPaymentAmount(int entirePrice, int totalDiscountEventDiscountAmount) {
-        output.display(PAYMENT_AMOUNT.getMessage());
+        displayTitle(PAYMENT_AMOUNT.getMessage());
         int paymentAmount = entirePrice - totalDiscountEventDiscountAmount;
         output.display(MoneyFormatter.format(paymentAmount));
     }
 
     public void displayBadge(String badgeName) {
-        output.display(BADGE.getMessage());
+        displayTitle(BADGE.getMessage());
         output.display(badgeName);
+    }
+
+    private void displayTitle(String title) {
+        output.display(String.format(TITLE_FORMAT.getMessage(), title));
     }
 
     public void displayError(String message) {
